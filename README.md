@@ -145,13 +145,9 @@ The `VITE_` variables are inlined at build time, so redeploy after changing them
 
 ## First deploy, in order
 
-1. Create the Supabase project, then add the three GitHub Actions secrets.
-2. Push to `main`. The workflow runs `supabase db push`, which creates the tables, the read API
-   and the cron jobs, and then deploys the `sync` function.
-3. Create the two Vault secrets. Optionally set `HEALTHCHECKS_URL`.
-4. Run the Backfill once against production. Put the production `SUPABASE_URL` and a secret key in
-   `.env`, then run `pnpm backfill`.
-5. Create the Cloudflare Pages project with the settings above.
+Follow [`docs/deploy.md`](docs/deploy.md). It walks through the Supabase project, the GitHub
+secrets, the Vault secrets, the Backfill and the Cloudflare Pages project, with a check after each
+step.
 
 ## Notes
 
