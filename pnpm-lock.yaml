@@ -29,7 +29,7 @@ importers:
       '@eonet/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@supabase/supabase-js':
+      '@supabase/postgrest-js':
         specifier: 2.118.0
         version: 2.118.0
       '@tanstack/react-query':
