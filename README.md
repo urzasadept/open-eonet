@@ -14,7 +14,27 @@ A small web app that shows natural events near a location, from a Supabase mirro
 
 ## Local setup
 
-You need Node 24, pnpm 11, the Supabase CLI and a running Docker (for example OrbStack).
+You need Node 24, pnpm 11, the Supabase CLI and a running Docker (for example OrbStack). Then:
+
+```sh
+pnpm local                 # http://localhost:5173
+```
+
+This one command:
+
+- installs dependencies;
+- starts local Supabase;
+- stores the Vault secrets;
+- runs the Backfill if the mirror is empty;
+- serves the `sync` Edge Function, logging to `supabase/.temp/functions-serve.log`;
+- starts the web app with the local keys.
+
+It writes no key files and is safe to re-run. Ctrl+C stops the web app and the function server.
+`supabase stop` stops the database.
+
+### Manual steps
+
+These are the steps `pnpm local` runs, if you want to run them one at a time.
 
 ```sh
 pnpm install

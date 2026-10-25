@@ -7,6 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
+    "local": "node supabase/scripts/local-dev.ts",
     "dev": "pnpm --filter @eonet/web dev",
     "build": "pnpm typecheck && pnpm --filter @eonet/web build",
     "typecheck": "tsc --build && pnpm typecheck:functions",
