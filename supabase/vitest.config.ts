@@ -4,6 +4,7 @@ export default defineProject({
   test: {
     name: "supabase",
     include: ["tests/**/*.test.ts"],
+    globalSetup: ["tests/global-setup.ts"],
     fileParallelism: false,
   },
 });
