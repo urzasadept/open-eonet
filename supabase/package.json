@@ -1,0 +1,12 @@
+{
+  "name": "@eonet/supabase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@eonet/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "2.118.0"
+  }
+}

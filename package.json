@@ -1,0 +1,24 @@
+{
+  "name": "eonet",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.0.9",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @eonet/web dev",
+    "build": "pnpm typecheck && pnpm --filter @eonet/web build",
+    "typecheck": "tsc --build",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "backfill": "pnpm --filter @eonet/backfill start"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}
