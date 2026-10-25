@@ -74,3 +74,7 @@ _Avoid_: Reconcile, refresh
 **Backfill**:
 The one-time import of EONET's historical Events into the mirror.
 _Avoid_: Seed, migration
+
+**Rejected Event**:
+An Event that EONET returns but that fails validation (e.g. impossible coordinates), so it is not mirrored. Each sync run records its Rejected Events; a response with more than 1% Rejected Events fails the whole run, because that signals a format change rather than bad data.
+_Avoid_: Invalid event, skipped event, bad event

@@ -9,15 +9,18 @@
   "scripts": {
     "dev": "pnpm --filter @eonet/web dev",
     "build": "pnpm typecheck && pnpm --filter @eonet/web build",
-    "typecheck": "tsc --build",
+    "typecheck": "tsc --build && pnpm typecheck:functions",
+    "typecheck:functions": "deno check --config supabase/functions/sync/deno.json supabase/functions/sync/index.ts",
     "lint": "biome check .",
     "format": "biome check --write .",
     "test": "vitest run",
-    "backfill": "pnpm --filter @eonet/backfill start"
+    "backfill": "pnpm --filter @eonet/backfill start",
+    "db:local-secrets": "node supabase/scripts/local-vault-secrets.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
     "@types/node": "26.6.5",
+    "deno": "2.9.6",
     "typescript": "7.0.2",
     "vitest": "5.0.5"
   }

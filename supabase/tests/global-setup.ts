@@ -1,5 +1,5 @@
-import { execFileSync } from "node:child_process";
 import type { TestProject } from "vitest/node";
+import { localStatus } from "../scripts/local-status.ts";
 
 declare module "vitest" {
   export interface ProvidedContext {
@@ -7,17 +7,6 @@ declare module "vitest" {
     publishableKey: string;
     secretKey: string;
   }
-}
-
-function localStatus(): Record<string, string> {
-  const output = execFileSync("supabase", ["status", "-o", "env"], { encoding: "utf8" });
-  return Object.fromEntries(
-    output
-      .split("\n")
-      .map((line) => line.match(/^(\w+)="(.*)"$/))
-      .filter((match) => match !== null)
-      .map((match) => [match[1], match[2]]),
-  );
 }
 
 export default function setup(project: TestProject) {

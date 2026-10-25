@@ -40,6 +40,8 @@ create table public.sync_runs (
   finished_at timestamptz,
   events_received integer,
   events_inserted integer,
+  events_rejected integer,
+  rejected_events jsonb,
   error text
 );
 

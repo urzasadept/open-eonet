@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@eonet/shared": "../../../packages/shared/src/index.ts",
+    "@supabase/server": "npm:@supabase/server@1.9.2",
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2.118.0",
+    "zod": "npm:zod@4.6.7"
+  }
+}

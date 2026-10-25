@@ -3,3 +3,5 @@ packages:
   - packages/shared
   - scripts/backfill
   - supabase
+allowBuilds:
+  deno: false
