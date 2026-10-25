@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@eonet/shared": "workspace:*",
+    "@eonet/supabase": "workspace:*",
     "@supabase/supabase-js": "2.118.0"
   }
 }

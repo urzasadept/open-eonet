@@ -1,40 +1,9 @@
-import { type MirrorStore, recordSyncRun, SYNC_QUERIES, syncQueries } from "@eonet/shared";
+import { recordSyncRun, SYNC_QUERIES, syncQueries } from "@eonet/shared";
 import { withSupabase } from "@supabase/server";
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
+import { supabaseMirrorStore } from "../_shared/mirror-store.ts";
 
 const RequestBody = z.object({ kind: z.enum(["incremental", "full"]) });
-
-function supabaseStore(db: SupabaseClient): MirrorStore {
-  return {
-    async startRun(kind) {
-      const { data, error } = await db.from("sync_runs").insert({ kind }).select("id").single();
-      if (error) throw new Error(`Could not start sync run: ${error.message}`);
-      return data.id;
-    },
-    async finishRun(runId, outcome) {
-      const row =
-        "error" in outcome
-          ? { error: outcome.error }
-          : {
-              events_received: outcome.result.received,
-              events_inserted: outcome.result.inserted,
-              events_rejected: outcome.result.rejected.length,
-              rejected_events: outcome.result.rejected,
-            };
-      const { error } = await db
-        .from("sync_runs")
-        .update({ ...row, finished_at: new Date().toISOString() })
-        .eq("id", runId);
-      if (error) throw new Error(`Could not finish sync run ${runId}: ${error.message}`);
-    },
-    async upsertEvents(events) {
-      const { data, error } = await db.rpc("upsert_events", { payload: events });
-      if (error) throw new Error(`upsert_events failed: ${error.message}`);
-      return data;
-    },
-  };
-}
 
 async function pingHealthcheck() {
   const url = Deno.env.get("HEALTHCHECKS_URL");
@@ -56,7 +25,7 @@ export default {
       );
     }
     const { kind } = body.data;
-    const store = supabaseStore(ctx.supabaseAdmin);
+    const store = supabaseMirrorStore(ctx.supabaseAdmin);
     try {
       const result = await recordSyncRun(store, kind, () => syncQueries(store, SYNC_QUERIES[kind]));
       await pingHealthcheck();

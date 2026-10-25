@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "include": ["tests", "scripts"],
+  "include": ["tests", "scripts", "functions/_shared"],
   "references": [{ "path": "../packages/shared" }]
 }

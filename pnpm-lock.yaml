@@ -72,6 +72,9 @@ importers:
       '@eonet/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@eonet/supabase':
+        specifier: workspace:*
+        version: link:../../supabase
       '@supabase/supabase-js':
         specifier: 2.118.0
         version: 2.118.0
@@ -81,7 +84,6 @@ importers:
       '@eonet/shared':
         specifier: workspace:*
         version: link:../packages/shared
-    devDependencies:
       '@supabase/supabase-js':
         specifier: 2.118.0
         version: 2.118.0

@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "dependencies": {
-    "@eonet/shared": "workspace:*"
+  "exports": {
+    "./mirror-store": "./functions/_shared/mirror-store.ts"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@eonet/shared": "workspace:*",
     "@supabase/supabase-js": "2.118.0"
   }
 }
