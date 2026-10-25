@@ -1,0 +1,31 @@
+{
+  "id": "EONET_25686",
+  "title": "Wildfire in China 1033175",
+  "description": null,
+  "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25686",
+  "closed": "2026-10-24T00:00:00Z",
+  "categories": [
+    {
+      "id": "wildfires",
+      "title": "Wildfires"
+    }
+  ],
+  "sources": [
+    {
+      "id": "GDACS",
+      "url": "https://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033175"
+    }
+  ],
+  "geometry": [
+    {
+      "magnitudeValue": 9420,
+      "magnitudeUnit": "hectare",
+      "date": "2026-10-24T19:00:00Z",
+      "type": "Point",
+      "coordinates": [
+        128.04772409704,
+        48.436437365819
+      ]
+    }
+  ]
+}
